@@ -1,18 +1,15 @@
-version: '3.8'
+version: "3.8"
 services:
-  mongo:
-    image: mongo:latest
-    container_name: mongo-container
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: fc7/jDQz6o7mVl3mNSsxgoun
+      POSTGRES_DB: backstage
     ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      - mongo-network
-
-volumes:
-  mongo-data:
-
+      - "5432:5432"
+      
 networks:
   mongo-network:
     driver: bridge
